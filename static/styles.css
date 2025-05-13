@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500;700&display=swap');*/
+
+/* Typography */
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+body {
+    font-family: /*'Jost',*/ sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+.container, .section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.nav {
+    text-align: right;
+    padding: 20px;
+    background-color: #222;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* MAIN LAYOUT FIX — only full height when needed */
+main {
+    padding: 2rem 1rem;
+}
+
+/* For homepage full-height layout */
+.fullscreen-center {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Forms */
+form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-width: 300px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+button {
+    display: block;
+    width: 100%;
+    margin: 10px 0 20px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #222;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Flash messages */
+.flashes-container {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+}
+
+.flash-message {
+    background: rgba(255,255,255,0.8);
+    color: black;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.flash-message.fade-out {
+    opacity: 0;
+}
+
+/* Reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 1s ease-out;
+    will-change: opacity, transform;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+/* Slider */
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+/* Image Flip */
+.piece-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 4 / 5;
+    margin: 0 auto;
+    perspective: 1000px;
+}
+
+.image-flip {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.piece-container.flipped .image-flip {
+    transform: rotateY(180deg);
+}
+
+.image-flip img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    backface-visibility: hidden;
+    top: 0;
+    left: 0;
+}
+
+.image-flip .front {
+    z-index: 2;
+}
+
+.image-flip .back {
+    transform: rotateY(180deg) scaleX(-1);
+}
+
+/* Flip button */
+.flip-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #fff;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.flip-btn:hover {
+    background: rgba(180, 180, 180, 0.3);
+}
+
+/* Utility */
+.letter-spaced {
+    letter-spacing: 0.35em;
+    font-weight: 600;
+    text-transform: uppercase;
+}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Gallery | M Y R K{% endblock %}
+
+{% block content %}
+
+    <section class="container py-5 text-center">
+        <h2>Gallery</h2>
+        <div class="slider mt-4" id="gallery">
+
+            {% for i in range(1, 4) %}
+            <div class="slide {% if loop.first %}active{% endif %}">
+                <div class="piece-container">
+                    <div class="image-flip">
+                        <img src="{{ url_for('static', filename='images/image' ~ i ~ '.jpg') }}" class="front" alt="Design {{ i }} Front">
+                        <img src="{{ url_for('static', filename='images/image' ~ i ~ '.jpg') }}" class="back" alt="Design {{ i }} Back">
+                    </div>
+                    <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <a href="{{ url_for('index') }}" class="btn btn-outline-light mt-4">Return Home</a>
+    </section>
+
+{% endblock %}
