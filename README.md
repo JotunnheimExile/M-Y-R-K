@@ -4,7 +4,7 @@ created for an idea of Jötunn and Nökturn.
 
 Web application for publishing custom hand painted clothes under M Y R K brand.
 
-13.05.25 - codespace for the project is created:
+13.05.25 - codespace for the project is created.
 
 Description:
 
