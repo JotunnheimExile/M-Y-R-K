@@ -11,26 +11,46 @@ Description:
 This project is a minimalist web application designed to serve as a digital foundation for a small business idea — specifically, a boutique online storefront. Its structure and interactivity reflect thoughtful design, with future extensibility in mind.
 
 Core Features
+
  • Modern User Interface: Built with clarity and user experience as a priority, the application presents a minimal and elegant design using HTML, CSS (with animations), and JavaScript for interactivity.
+ 
  • User Registration and Authentication: Full functionality for user sign-up and login, including:
+ 
  • Password hashing with Werkzeug
+ 
  • Flash messaging to inform users of login/registration success or failure
+ 
  • Persistent session tracking for authenticated users
+ 
  • Database Integration: SQLite used to store user credentials (username, email, and securely hashed password).
+ 
  • Image Gallery with Flip Animation: A dedicated product showcase page where each item can be interactively flipped to reveal its reverse side (useful for clothing like shirts), implemented via custom JavaScript and CSS.
+ 
  • Static Contact Page: Offers visitors a means to reach out — designed to eventually support dynamic form submission or integration with email APIs.
+ 
 
 Project Files and Purpose
+
  • app.py — The Flask application; handles routes, user session logic, and database interactions.
+ 
  • templates/ — HTML templates:
+ 
  • base.html: Common layout and navigation for all pages.
+ 
  • index.html: Landing page.
+ 
  • gallery.html: Displays product images with interactive flip effect.
+ 
  • contacts.html: Static contact form.
+ 
  • login.html, register.html: Auth forms.
+ 
  • static/ — Contains styles.css and any image assets or scripts.
+ 
  • requirements.txt — Dependencies for recreating the environment.
+ 
  • project.db — SQLite database file storing user data.
+ 
 
 Design Choices
 
