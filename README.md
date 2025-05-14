@@ -54,7 +54,7 @@ Project Files and Purpose
 
 Design Choices
 
-One core decision was to prioritize visual simplicity — letting content speak for itself. Rather than implementing a full shopping cart or admin dashboard, I focused on polishing core infrastructure: login system, templating, and interactive UI elements. The flip animation in the gallery, for example, was carefully engineered with CSS transform properties to serve future product needs like showcasing apparel front and back.
+One core decision was to prioritize visual simplicity — letting content speak for itself. I focused on polishing core infrastructure: login system, templating, and interactive UI elements. The flip animation in the gallery, for example, was carefully engineered with CSS transform properties to serve future product needs like showcasing apparel front and back.
 
 I also deliberately chose Flask for its flexibility and to stay close to the metal during development, learning more in the process. Using SQLite made setup and deployment lightweight, while still allowing for structured data persistence.
 
