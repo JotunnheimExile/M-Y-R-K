@@ -129,69 +129,87 @@ button {
 }
 
 /* Image Flip */
-.piece-container {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    aspect-ratio: 4 / 5;
-    margin: 0 auto;
-    perspective: 1000px;
+.flip-card {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 4 / 5;
+  margin: 2rem auto;
+  perspective: 1600px;
 }
 
-.image-flip {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
+.flip-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  transition: transform 0.8s ease-in-out;
 }
 
-.piece-container.flipped .image-flip {
-    transform: rotateY(180deg);
+.flip-card.flipped .flip-inner {
+  transform: scale(1.01) rotateY(180deg);
 }
 
-.image-flip img {
+.flip-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.flip-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+.flip-face::after {
+    content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.02), rgba(0,0,0,0.2));
+    pointer-events: none;
     border-radius: 8px;
-    backface-visibility: hidden;
-    top: 0;
-    left: 0;
 }
 
-.image-flip .front {
-    z-index: 2;
+.front {
+  transform: rotateY(0deg);
+  z-index: 2;
 }
 
-.image-flip .back {
-    transform: rotateY(180deg) scaleX(-1);
+.back {
+  transform: rotateY(180deg) scaleX(-1);
+  z-index: 1;
 }
 
 /* Flip button */
 .flip-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 20;
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid #fff;
-    border-radius: 50%;
-    color: white;
-    font-size: 1.2rem;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 6px 10px;
-    cursor: pointer;
-    transition: background 0.3s;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #fff;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2rem;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .flip-btn:hover {
-    background: rgba(180, 180, 180, 0.3);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Utility */

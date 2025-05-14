@@ -9,10 +9,14 @@
 
             {% for i in range(1, 4) %}
             <div class="slide {% if loop.first %}active{% endif %}">
-                <div class="piece-container">
-                    <div class="image-flip">
-                        <img src="{{ url_for('static', filename='images/image' ~ i ~ '.jpg') }}" class="front" alt="Design {{ i }} Front">
-                        <img src="{{ url_for('static', filename='images/image' ~ i ~ '.jpg') }}" class="back" alt="Design {{ i }} Back">
+                <div class="flip-card">
+                    <div class="flip-inner">
+                        <div class="flip-face front">
+                            <img src="{{ url_for('static', filename='images/image' ~ i ~ '.jpg') }}" alt="Design {{ i }} Front">
+                        </div>
+                        <div class="flip-face back">
+                            <img src="{{ url_for('static', filename='images/image' ~ i ~ '.jpg') }}" alt="Design {{ i }} Back">
+                        </div>
                     </div>
                     <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
                 </div>

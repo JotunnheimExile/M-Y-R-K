@@ -36,14 +36,14 @@ document.addEventListener("DOMContentLoaded", function() {
             showSlide(currentSlide);
         }
 
-        setInterval(nextSlide, 4000); // slide every 4 seconds
+        setInterval(nextSlide, 6000); // slide every 6 seconds
     }
 });
 
 // Front-back flip functionality
 function flip(button) {
-    const container = button.closest('.piece-container');
-    container.classList.toggle('flipped');
+    const card = button.closest('.flip-card');
+    card.classList.toggle('flipped');
 }
 
 // Fade-out of info flashes
