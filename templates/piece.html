@@ -7,17 +7,17 @@
     <div class="flip-card">
         <div class="flip-inner">
             <div class="flip-face front">
-                <img src="{{ url_for('static', filename='images/image' ~ i ~ '.jpg') }}" alt="Design {{ i }} Front">
+                <img src="{{ url_for('static', filename='images/piece.front_image) }}" alt="{{ piece.title }} Front">
             </div>
             <div class="flip-face back">
-                <img src="{{ url_for('static', filename='images/image' ~ i ~ '.jpg') }}" alt="Design {{ i }} Back">
+                <img src="{{ url_for('static', filename='images/piece.back_image) }}" alt="{{ piece.title }} Back">
             </div>
         </div>
         <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
     </div>
 
     {% if not piece.reserved %}
-        <form action="{ url_for('reserve_piece', piece_id=piece.id) }" method="POST">
+        <form action="{{ url_for('reserve_piece', piece_id=piece.id) }}" method="POST">
             <button type="submit" class="btn btn-outline-light mt-3">Reserve this Piece</button>
         </form>
     {% else %}
