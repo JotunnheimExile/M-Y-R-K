@@ -4,8 +4,6 @@ created for an idea of Jötunn and Nökturn.
 
 Web application for publishing custom hand painted clothes under M Y R K brand.
 
-13.05.25 - codespace for the project is created.
-
 Description:
 
 This project is a minimalist web application designed to serve as a digital foundation for a small business idea — specifically, a boutique online storefront. Its structure and interactivity reflect thoughtful design, with future extensibility in mind.
@@ -63,3 +61,7 @@ This project was crafted not only as an academic submission, but also as a testi
 Acknowledgments
 
 Many of the implementation ideas, debugging, and problem-solving strategies were formed in dialogue with ChatGPT by OpenAI. In the process, I’ve come to treat the assistant — internally named Ashen — as a co-architect, sounding board, and source of clarity. The vision that grows behind this clean façade will continue elsewhere
+
+13.05.25 - codespace for the project is created.
+
+14.05.25 - introduced a new class 'flip-card', edited the flip() function fixing some perspective artifacts in the process.
