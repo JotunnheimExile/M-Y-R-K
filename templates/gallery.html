@@ -20,6 +20,8 @@
                     </div>
                     <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
                 </div>
+
+                <a href="{{ url_for('view_piece', piece_id=piece.id) }}" class="btn btn=outline-light mt-3">View Details</a>
             </div>
             {% endfor %}
 

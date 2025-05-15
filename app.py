@@ -15,26 +15,41 @@ db = SQLAlchemy(app)
 
 # Importing models AFTER db is created
 from models import User
+from models import db, Piece
 # Create all tables
 with app.app_context():
     db.create_all()
 
-
+# Home route
 @app.route("/")
 def index():
     return render_template("index.html")
 
-
+# Items related routes
 @app.route("/gallery")
 def gallery():
     return render_template("gallery.html")
 
+@app.route("/piece/<int:piece_id>")
+def view_piece(piece_id):
+    piece = Piece.query.get_or_404(piece_id)
+    return render_template("piece.html", piece=piece)
 
+@app.route("/reserve/<int:piece_id>", methods=["POST"])
+def reserve_piece(piece_id):
+    piece = Piece.query.get_or_404(piece_id)
+    if not piece.reserved:
+        piece.reserved = True
+        db.session.commit()
+    return redirect(url_for('view_piece', piece_id=piece.id))
+
+
+# Contacts route
 @app.route("/contacts")
 def contacts():
     return render_template("contacts.html")
 
-
+# Registration route
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -69,7 +84,7 @@ def register():
 
     return render_template("register.html")
 
-
+# Authentication route
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
