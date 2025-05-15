@@ -222,3 +222,8 @@ button {
     font-weight: 600;
     text-transform: uppercase;
 }
+
+section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
