@@ -28,7 +28,8 @@ def index():
 # Items related routes
 @app.route("/gallery")
 def gallery():
-    return render_template("gallery.html")
+    pieces = Piece.query.all()
+    return render_template("gallery.html", pieces=pieces)
 
 @app.route("/piece/<int:piece_id>")
 def view_piece(piece_id):

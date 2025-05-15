@@ -4,24 +4,23 @@
 {% block content %}
 
     <section class="container py-5 text-center">
-        <h2>Gallery</h2>
         <div class="slider mt-4" id="gallery">
 
-            {% for i in range(1, 4) %}
+            {% for piece in pieces %}
             <div class="slide {% if loop.first %}active{% endif %}">
                 <div class="flip-card">
                     <div class="flip-inner">
                         <div class="flip-face front">
-                            <img src="{{ url_for('static', filename='images/image' ~ i ~ '.jpg') }}" alt="Design {{ i }} Front">
+                            <img src="{{ url_for('static', filename=piece.front_image) }}" alt="{{ piece.title }} Front">
                         </div>
                         <div class="flip-face back">
-                            <img src="{{ url_for('static', filename='images/image' ~ i ~ '.jpg') }}" alt="Design {{ i }} Back">
+                            <img src="{{ url_for('static', filename=piece.back_image) }}" alt="{{ piece.title }} Back">
                         </div>
                     </div>
                     <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
                 </div>
 
-                <a href="{{ url_for('view_piece', piece_id=i) }}" class="btn btn-outline-light mt-3">View Details</a>
+                <a href="{{ url_for('view_piece', piece_id=piece.id) }}" class="btn btn-outline-light mt-3">View Details</a>
             </div>
             {% endfor %}
 

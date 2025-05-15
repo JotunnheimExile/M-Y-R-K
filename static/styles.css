@@ -189,6 +189,10 @@ button {
   z-index: 1;
 }
 
+.description-text {
+    margin-bottom: 4rem;
+}
+
 /* Flip button */
 .flip-btn {
   position: absolute;

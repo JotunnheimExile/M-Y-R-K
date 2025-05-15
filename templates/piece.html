@@ -2,15 +2,15 @@
 {% block content %}
 <div class="container py-5 text-center">
     <h2>{{ piece.title }}</h2>
-    <p class="text-muted">{{ piece.description }}</p>
+    <p class="text-muted description-text">{{ piece.description }}</p>
 
     <div class="flip-card">
         <div class="flip-inner">
             <div class="flip-face front">
-                <img src="{{ url_for('static', filename='images/piece.front_image) }}" alt="{{ piece.title }} Front">
+                <img src="{{ url_for('static', filename=piece.front_image) }}" alt="{{ piece.title }} Front">
             </div>
             <div class="flip-face back">
-                <img src="{{ url_for('static', filename='images/piece.back_image) }}" alt="{{ piece.title }} Back">
+                <img src="{{ url_for('static', filename=piece.back_image) }}" alt="{{ piece.title }} Back">
             </div>
         </div>
         <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
