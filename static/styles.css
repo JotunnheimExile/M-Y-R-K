@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&display=swap');
-/*@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500;700&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap');
 
 /* Typography */
 h1, h2, h3 {
@@ -7,7 +8,7 @@ h1, h2, h3 {
 }
 
 body {
-    font-family: /*'Jost',*/ sans-serif;
+    font-family: 'Manrope', sans-serif;
     background-color: #f7f7f7;
     margin: 0;
     padding: 0;
@@ -31,7 +32,7 @@ body {
     font-weight: bold;
 }
 
-/* MAIN LAYOUT FIX — only full height when needed */
+/* MAIN LAYOUT FIX — only full height when needed*/
 main {
     padding: 2rem 1rem;
 }
