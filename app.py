@@ -1,8 +1,9 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
+from admin import MyAdminIndexView, SecureModelView
 from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
+from flask_login import LoginManager
 from werkzeug.security import generate_password_hash, check_password_hash
 
 # Initializing the Flask app and SQLAlchemy
@@ -16,16 +17,29 @@ app.secret_key = os.urandom(24)
 db = SQLAlchemy(app)
 
 # Importing models AFTER db is created
-from models import User
-from models import db, Piece
+from models import db, User, Piece
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login' 
+
 # Create all tables
 with app.app_context():
     db.create_all()
+
+# Loading Admin
+admin = Admin(app, index_view=MyAdminIndexView(), template_mode='bootstrap4')
+admin.add_view(SecureModelView(Piece, db.session))
+
+# Loading User
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 # Home route
 @app.route("/")
 def index():
     return render_template("index.html")
+
 
 # Items related routes
 @app.route("/gallery")
@@ -51,6 +65,7 @@ def reserve_piece(piece_id):
 @app.route("/contacts")
 def contacts():
     return render_template("contacts.html")
+
 
 # Registration route
 @app.route("/register", methods=["GET", "POST"])
@@ -86,6 +101,7 @@ def register():
         return redirect(url_for("login"))
 
     return render_template("register.html")
+
 
 # Authentication route
 @app.route("/login", methods=["GET", "POST"])
