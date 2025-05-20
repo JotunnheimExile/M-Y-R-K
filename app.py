@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from flask_sqlalchemy import SQLAlchemy
 from admin import MyAdminIndexView, SecureModelView
 from flask_admin import Admin
-from flask_login import LoginManager
+from flask_login import LoginManager, logout_user, login_required, login_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
 # Initializing the Flask app and SQLAlchemy
@@ -19,8 +19,8 @@ db = SQLAlchemy(app)
 # Importing models AFTER db is created
 from models import db, User, Piece
 login_manager = LoginManager()
+login_manager.login_view = "login"
 login_manager.init_app(app)
-login_manager.login_view = 'login' 
 
 # Create all tables
 with app.app_context():
@@ -116,6 +116,8 @@ def login():
             flash("Invalid credentials.")
             return redirect(url_for("login"))
 
+        login_user(user)
+
         session["user_id"] = user.id
         session["email"] = email
         flash("Logged in successfully.")
@@ -125,10 +127,15 @@ def login():
 
 @app.route("/logout")
 def logout():
+    logout_user()
     session.clear()
     flash("Logged out.", "info")
     return redirect(url_for("index"))
 
-
+@app.route("/dashboard")
+@login_required
+def dashboard():
+    ...
+    
 if __name__ == "__main__":
     app.run(debug=True)
