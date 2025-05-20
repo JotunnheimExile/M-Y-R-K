@@ -186,7 +186,7 @@ button {
 }
 
 .back {
-  transform: rotateY(180deg) scaleX(-1);
+  transform: rotateY(180deg);
   z-index: 1;
 }
 
