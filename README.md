@@ -67,3 +67,5 @@ Many of the implementation ideas, debugging, and problem-solving strategies were
 14.05.25 - introduced a new class 'flip-card', edited the flip() function fixing some perspective artifacts in the process.
 
 15.05.25 - created a separate template for each published item. Has also introduced Piece model for data base storing.
+
+20.05.25 - Flask admin panel is implemented.
