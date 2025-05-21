@@ -30,6 +30,10 @@ Core Features
 Project Files and Purpose
 
  • app.py — The Flask application; handles routes, user session logic, and database interactions.
+
+ • admin.py - Flask admin panel functionality
+
+ • models.py - Data Models
  
  • templates/ — HTML templates:
  

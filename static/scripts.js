@@ -22,29 +22,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Primitive slides
 document.addEventListener("DOMContentLoaded", function() {
-    const slides = document.querySelectorAll('.slide');
-    if (slides.length > 0) {
-        let currentSlide = 0;
+    const cards = document.querySelectorAll('.vault-card');
+    let currentIndex = 0;
 
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[index].classList.add('active');
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length; // loop back to 0
-            showSlide(currentSlide);
-        }
-
-        setInterval(nextSlide, 6000); // slide every 6 seconds
+    function rotateVault(index) {
+        const angle = 360 / cards.length;
+        cards.forEach((card, i) => {
+            const offset = (i - index + cards.length) % cards.length;
+            card.style.transform = `rotateY(${offset * angle}deg) translateZ(600px)`;
+            card.style.opacity = offset === 0 ? 1 : 0.5;
+            card.style.zIndex = offset === 0 ? 1 : 0.5;
+        });
     }
+
+    rotateVault(currentIndex);
+
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % cards.length;
+        rotateVault(currentIndex);
+    }, 6000);
 });
 
-// Front-back flip functionality
 function flip(button) {
-    const card = button.closest('.flip-card');
-    card.classList.toggle('flipped');
+    const card = button.closest('.vault-card');
+    card.querySelector('.flip-inner').classList.toggle('flipped');
 }
+
+// Front-back flip functionality
+// function flip(button) {
+//     const card = button.closest('.flip-card');
+//     card.classList.toggle('flipped');
+// }
 
 // Fade-out of info flashes
 document.addEventListener('DOMContentLoaded', () => {
