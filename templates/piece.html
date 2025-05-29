@@ -1,19 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container py-5 text-center">
+<div class="vault-wrapper">
     <h2>{{ piece.title }}</h2>
     <p class="text-muted description-text">{{ piece.description }}</p>
 
-    <div class="flip-card">
+    <div class="vault-card">
         <div class="flip-inner">
-            <div class="flip-face front">
+            <div class="flip-front">
                 <img src="{{ url_for('static', filename=piece.front_image) }}" alt="{{ piece.title }} Front">
+                <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
             </div>
-            <div class="flip-face back">
+            <div class="flip-back">
                 <img src="{{ url_for('static', filename=piece.back_image) }}" alt="{{ piece.title }} Back">
+                <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
             </div>
         </div>
-        <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
     </div>
 
     {% if not piece.reserved %}

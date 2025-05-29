@@ -20,39 +20,32 @@ document.addEventListener("DOMContentLoaded", () => {
     revealOnScroll(); // Trigger on load
 });
 
-// Primitive slides
+// Vault Carousel
 document.addEventListener("DOMContentLoaded", function() {
+    const carousel = document.querySelector(".vault-carousel");
     const cards = document.querySelectorAll('.vault-card');
-    let currentIndex = 0;
+    const total = cards.length;
+    const angle = 360 / total;
+    let currentRotation = 0;
 
-    function rotateVault(index) {
-        const angle = 360 / cards.length;
-        cards.forEach((card, i) => {
-            const offset = (i - index + cards.length) % cards.length;
-            card.style.transform = `rotateY(${offset * angle}deg) translateZ(600px)`;
-            card.style.opacity = offset === 0 ? 1 : 0.5;
-            card.style.zIndex = offset === 0 ? 1 : 0.5;
-        });
-    }
+    // Position cards in a 3D circle
+    cards.forEach((card, i) => {
+        const rotation = i * angle;
+        card.style.transform = `rotateY(${rotation}deg) translateZ(600px)`;
+    });
 
-    rotateVault(currentIndex);
-
-    setInterval(() => {
-        currentIndex = (currentIndex + 1) % cards.length;
-        rotateVault(currentIndex);
-    }, 6000);
+    // Rotate carousel on click
+    carousel.addEventListener("click", () => {
+        currentRotation -= angle;
+        carousel.style.transform = `rotateY(${currentRotation}deg)`;
+    });
 });
 
+// Front-back flip functionality
 function flip(button) {
     const card = button.closest('.vault-card');
     card.querySelector('.flip-inner').classList.toggle('flipped');
 }
-
-// Front-back flip functionality
-// function flip(button) {
-//     const card = button.closest('.flip-card');
-//     card.classList.toggle('flipped');
-// }
 
 // Fade-out of info flashes
 document.addEventListener('DOMContentLoaded', () => {

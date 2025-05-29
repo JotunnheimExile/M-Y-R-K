@@ -4,26 +4,25 @@
 {% block content %}
 
     <!--<section class="container-fluid d-flex align-items-center justify-content-center vh-100 text-center">-->
-        <section class="vault-wrapper">
+    <div class="vault-wrapper">
         <div class="vault-carousel" id="vault">
             {% for piece in pieces %}
             <div class="vault-card" data-index="{{ loop.index0 }}">
                 <div class="flip-inner">
-                    <div class="flip-face front">
-                        <img src="{{ url_for('static', filename=piece.front_image) }}" alt="{{ piece.title }} Front">
+                    <div class="flip-front">
+                        <img src="{{ url_for('static', filename=piece.front_image) }}" alt="{{ piece.title }} Front" class="vault-image">
+                        <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
                     </div>
-                    <div class="flip-face back">
-                        <img src="{{ url_for('static', filename=piece.back_image) }}" alt="{{ piece.title }} Back">
+                    <div class="flip-back">
+                        <img src="{{ url_for('static', filename=piece.back_image) }}" alt="{{ piece.title }} Back" class="vault-image">
+                        <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
                     </div>
                 </div>
-                <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
             </div>
-
-            <a href="{{ url_for('view_piece', piece_id=piece.id) }}" class="btn btn-outline-light mt-3">View Details</a>
-            </div>
-            {% endfor %}
+            <a href="{{ url_for('view_piece', piece_id=piece.id) }}" class="view-details">View Details</a>
         </div>
-    </section>
+    {% endfor %}
+    </div>
 
     <section class="container text-center py-5">
         <a href="{{ url_for('index') }}" class="btn btn-outline-light mt-4">Return Home</a>

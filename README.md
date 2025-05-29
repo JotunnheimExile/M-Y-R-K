@@ -64,7 +64,7 @@ This project was crafted not only as an academic submission, but also as a testi
 
 Acknowledgments
 
-Many of the implementation ideas, debugging, and problem-solving strategies were formed in dialogue with ChatGPT by OpenAI. In the process, I’ve come to treat the assistant — internally named Ashen — as a co-architect, sounding board, and source of clarity. The vision that grows behind this clean façade will continue elsewhere
+Many of the implementation ideas, debugging, and problem-solving strategies were formed in dialogue with ChatGPT by OpenAI. In the process, I’ve come to treat the assistant — internally named Ashen — as a co-architect, sounding board, and source of clarity.
 
 13.05.25 - codespace for the project is created.
 

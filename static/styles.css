@@ -120,21 +120,30 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
+    flex-direction: column;
 }
 
 .vault-carousel {
     display: flex;
-    transform: preserve-3d;
+    position: relative;
+    perspective: 1500px;
+    width: 100%;
+    height: 600px;
+    justify-content: center;
+    transform-style: preserve-3d;
+    transform: rotate(0deg);
     transition: transform 1s ease;
+    justify-content: center;
+    align-items: center;
 }
 
 .vault-card {
     position: absolute;
     width: 300px;
     height: 400px;
-    transform-origin: center center;
     transform-style: preserve-3d;
-    transition: transform 1s ease, opacity 0.5s ease;
+    transition: transform 0.8s ease, opacity 0.5s ease;
 }
 
 .vault-card .flip-inner {
@@ -149,16 +158,49 @@ button {
     transform: rotateY(180deg);
 }
 
-.flip-face {
+.flip-front, .flip-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-.flip-face.back {
+.flip-back {
     transform: rotateY(180deg);
 }
+
+.flipped {
+    transform: rotateY(180deg);
+}
+
+.vault-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.view-details {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1f1f1f;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    border: 1px solid #fff2;
+    transition: background 0.2s;
+}
+
+.view-details:hover {
+    background: #333;
+}
+
 /* Slider
 .slider {
     position: relative;
@@ -178,44 +220,50 @@ button {
 */
 /* Image Flip */
 .flip-card {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  aspect-ratio: 4 / 5;
-  margin: 2rem auto;
-  perspective: 1600px;
+    background: #1e1e1e;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    aspect-ratio: 4 / 5;
+    margin: 2rem auto;
+    perspective: 1600px;
 }
 
 .flip-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transform-origin: center center;
-  transition: transform 0.8s ease-in-out;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    transition: transform 0.8s ease-in-out;
 }
 
 .flip-card.flipped .flip-inner {
-  transform: scale(1.01) rotateY(180deg);
+    transform: scale(1.01) rotateY(180deg);
 }
 
 .flip-face {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 8px;
-  overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .flip-face img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+}
+
+.flip-face.back {
+    transform: rotateY(180deg);
 }
 
 .flip-face::after {
@@ -228,13 +276,13 @@ button {
 }
 
 .front {
-  transform: rotateY(0deg);
-  z-index: 2;
+    transform: rotateY(0deg);
+    z-index: 2;
 }
 
 .back {
-  transform: rotateY(180deg);
-  z-index: 1;
+    transform: rotateY(180deg);
+    z-index: 1;
 }
 
 .description-text {
@@ -243,25 +291,26 @@ button {
 
 /* Flip button */
 .flip-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 5;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid #fff;
-  border-radius: 50%;
-  color: white;
-  font-size: 1.2rem;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #fff;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
 }
 
 .flip-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 /* Utility */
