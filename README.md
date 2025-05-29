@@ -1,6 +1,6 @@
 # M-Y-R-K
 M Y R K website project
-created for an idea of Jötunn and Nökturn.
+created for an idea of Jötunn and Nøkturn.
 
 Web application for publishing custom hand painted clothes under M Y R K brand.
 
