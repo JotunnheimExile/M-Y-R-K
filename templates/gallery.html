@@ -2,7 +2,6 @@
 {% block title %}Gallery | M Y R K{% endblock %}
 
 {% block content %}
-
     <!--<section class="container-fluid d-flex align-items-center justify-content-center vh-100 text-center">-->
     <div class="vault-wrapper">
         <div class="vault-carousel" id="vault">
@@ -11,21 +10,17 @@
                 <div class="flip-inner">
                     <div class="flip-front">
                         <img src="{{ url_for('static', filename=piece.front_image) }}" alt="{{ piece.title }} Front" class="vault-image">
-                        <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
-                    </div>
-                    <div class="flip-back">
-                        <img src="{{ url_for('static', filename=piece.back_image) }}" alt="{{ piece.title }} Back" class="vault-image">
-                        <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
                     </div>
                 </div>
+                <a href="{{ url_for('view_piece', piece_id=piece.id) }}" class="view-details">View Details</a>
             </div>
-            <a href="{{ url_for('view_piece', piece_id=piece.id) }}" class="view-details">View Details</a>
+            {% endfor %}
         </div>
-    {% endfor %}
+        <button id="prev">←</button>
+        <button id="next">→</button>
     </div>
 
-    <section class="container text-center py-5">
-        <a href="{{ url_for('index') }}" class="btn btn-outline-light mt-4">Return Home</a>
-    </section>
-
+<section class="container text-center py-5">
+    <a href="{{ url_for('index') }}" class="btn btn-outline-light mt-4">Return Home</a>
+</section>
 {% endblock %}
