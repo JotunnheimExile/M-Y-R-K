@@ -32,6 +32,32 @@ body {
     font-weight: bold;
 }
 
+/* Logo */
+.intro-header {
+    height: 80vh; /* Full screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.intro-header img {
+    margin-top: -100px;
+}
+
+.logo-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.myrk-logo {
+    width: 80vmin; /* Scales responsively based on viewport */
+    height: auto;
+    filter: invert(1);
+}
+
 /* MAIN LAYOUT FIX — only full height when needed*/
 main {
     padding: 2rem 1rem;
