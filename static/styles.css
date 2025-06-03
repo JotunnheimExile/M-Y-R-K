@@ -138,40 +138,69 @@ button {
     transform: translateY(0px);
 }
 
-/* Vault Carousel */
-.vault-wrapper {
-    position: relative;
+#galleryViewport {
     width: 100%;
-    height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
+    position: relative;
+    padding: 2rem 0;
+}
+
+.gallery-container {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    margin-top: 50px;
+    cursor: grab;
+}
+
+.gallery-container.dragging {
+    cursor: grabbing;
+}
+
+.gallery-track {
+    align-items: flex-start;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    transition: transform 0.2s ease;
+    will-change: transform;
 }
 
-.vault-carousel {
+.gallery-item {
     position: relative;
-    width: 1000px;
-    height: 500px;
-    transform-style: preserve-3d;
-    transition: transform 1s ease;
+    flex: 0 0 auto; /* prevents shrinking */
+    width: 30vw;
+    max-width: 420px;
+    transform: scale(0.96);
+    transition: transform 0.3 ease;
+    margin: 0 1rem;
+    margin-top: -100px;
+    pointer-events: none;
 }
 
-.vault-card {
-    position: absolute;
-    width: 300px;
-    height: 400px;
-    transition: transform 1s ease, opacity 1s ease;
-    transform-style: preserve-3d;
-    border-radius: 10px;
-    overflow: hidden;
+.gallery-item.centered {
+    transform: scale(1.05);
+    z-index: 2;
 }
 
-.vault-image {
+.gallery-item:not(.centered) {
+    opacity: 0.7;
+    filter: grayscale(20%);
+}
+
+.gallery-item * {
+    pointer-events: auto;
+}
+
+.gallery-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    display: block;
     border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.03);
 }
 
 .view-details {
@@ -179,29 +208,79 @@ button {
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background: #111;
-    color: #fff;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
+    margin-top: 12px;
+    display: inline-block;
+    color: white;
     padding: 6px 12px;
     border-radius: 6px;
-    font-size: 14px;
     text-decoration: none;
+    font-size: 14px;
+    border: 1px solid #fff2;
+}
+
+.view-details:hover {
+    background: #444;
+}
+
+/* Vault Carousel CURRENTLY NOT IN USE */
+.vault-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.vault-carousel {
+    display: flex;
+    gap: 3rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 2rem;
+    cursor: grab;
+    scrollbar-width: none; /* Firefox */
+}
+
+.vault-carousel:active {
+    cursor: grabbing;
+}
+
+.vault-carousel::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.vault-card {
+    width: 400px;
+    height: 600px;
+    transition: transform 0.6s cubic-bezier(0.24, 1, 0.32, 1);
+}
+
+.vault-card:hover {
+    transform: scale(1.07);
     z-index: 2;
 }
 
-button#prev, button#next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2rem;
-    background: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-    z-index: 10;
+.vault-image {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
 }
 
-button#prev {left: 5%; }
-button#next {right: 5%; }
+/*
+.view-details {
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+    background: #222;
+    color: #eee;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.8 ease;
+}
+*/
 
 .flip-front, .flip-back {
     position: absolute;
@@ -241,23 +320,6 @@ button#next {right: 5%; }
     background: #333;
 }
 
-/* Slider
-.slider {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-.slide {
-    display: none;
-}
-
-.slide.active {
-    display: block;
-}
-*/
 /* Image Flip */
 .flip-card {
     background: #1e1e1e;

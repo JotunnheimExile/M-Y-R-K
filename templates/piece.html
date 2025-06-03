@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-
+    <!--
     {% if not piece.reserved %}
         <form action="{{ url_for('reserve_piece', piece_id=piece.id) }}" method="POST">
             <button type="submit" class="btn btn-outline-light mt-3">Reserve this Piece</button>
@@ -24,7 +24,7 @@
     {% else %}
         <p class="text-warning mt-3">This piece is reserved.</p>
     {% endif %}
-
+    -->
     <a href="{{ url_for('gallery') }}" class="btn btn-outline-secondary mt-4">Back to Gallery</a>
 </div>
 {% endblock %}
