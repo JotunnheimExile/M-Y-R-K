@@ -1,8 +1,8 @@
 # M-Y-R-K
-M Y R K website project
+M Y R K  website project
 created for an idea of Jötunn and Nøkturn.
 
-Web application for publishing custom hand painted clothes under M Y R K brand.
+Web application for publishing custom hand painted clothes under  M Y R K  brand.
 
 Description:
 
@@ -35,13 +35,13 @@ Project Files and Purpose
 
  • models.py - Data Models
  
- • templates/ — HTML templates:
+ • templates/ — HTML templates.
  
  • base.html: Common layout and navigation for all pages.
  
  • index.html: Landing page.
  
- • gallery.html: Displays product images with interactive flip effect.
+ • gallery.html: Displays product images.
  
  • contacts.html: Static contact form.
  
@@ -56,11 +56,7 @@ Project Files and Purpose
 
 Design Choices
 
-One core decision was to prioritize visual simplicity — letting content speak for itself. I focused on polishing core infrastructure: login system, templating, and interactive UI elements. The flip animation in the gallery, for example, was carefully engineered with CSS transform properties to serve future product needs like showcasing apparel front and back.
-
-I also deliberately chose Flask for its flexibility and to stay close to the metal during development, learning more in the process. Using SQLite made setup and deployment lightweight, while still allowing for structured data persistence.
-
-This project was crafted not only as an academic submission, but also as a testing ground for future ambitions — a template upon which a real brand could emerge.
+Minimalistic, modern interface - no clutter. Available items are presented through a draggable scroll on a dedicated gallery page.
 
 Acknowledgments
 
@@ -73,3 +69,5 @@ Many of the implementation ideas, debugging, and problem-solving strategies were
 15.05.25 - created a separate template for each published item. Has also introduced Piece model for data base storing.
 
 20.05.25 - Flask admin panel is implemented.
+
+03.06.25 - swapped the carousel for a draggable scroll. Logo redrawn.
