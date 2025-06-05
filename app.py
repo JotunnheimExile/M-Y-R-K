@@ -1,26 +1,28 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-from flask_sqlalchemy import SQLAlchemy
 from admin import MyAdminIndexView, SecureModelView
 from flask_admin import Admin
-from flask_login import LoginManager, logout_user, login_required, login_user
+from flask_login import logout_user, login_required, login_user, current_user, user_logged_in
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import timedelta
 
 # Initializing the Flask app and SQLAlchemy
 app = Flask(__name__)
 app.debug = True
 
 # Database setup
+from extensions import db, login_manager
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///myrk.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["REMEMBER_COOKIE_DURATION"] = timedelta(days=30) # Remember user for 30 days
 app.secret_key = os.urandom(24)
-db = SQLAlchemy(app)
 
 # Importing models AFTER db is created
-from models import db, User, Piece
-login_manager = LoginManager()
-login_manager.login_view = "login"
+db.init_app(app)
 login_manager.init_app(app)
+login_manager.login_view = "login"
+
+from models import User, Piece
 
 # Create all tables
 with app.app_context():
@@ -35,6 +37,7 @@ admin.add_view(SecureModelView(Piece, db.session))
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+### ROUTES ###
 # Home route
 @app.route("/")
 def index():
@@ -109,6 +112,7 @@ def login():
     if request.method == "POST":
         email = request.form["email"]
         password = request.form["password"]
+        remember = True if request.form.get("remember") else False
 
         user = User.query.filter_by(email=email).first()
 
@@ -116,7 +120,7 @@ def login():
             flash("Invalid credentials.")
             return redirect(url_for("login"))
 
-        login_user(user)
+        login_user(user, remember=remember) # Persistent login
 
         session["user_id"] = user.id
         session["email"] = email
@@ -132,10 +136,26 @@ def logout():
     flash("Logged out.", "info")
     return redirect(url_for("index"))
 
+# Who am I?
+@app.route("/whoami")
+def whoami():
+    if current_user.is_authinticated:
+        return f"Logged in as: {current_user.username}"
+    return "Not logged in"
+
+# Session information
+@app.route("/session_info")
+def session_info():
+    return f"Remember token active: {'_remember' in session}"
+
+@user_logged_in.connect_via(app)
+def when_user_logs_in(sender, user):
+    print(f"User {user.username} has logged in.")
+
 @app.route("/dashboard")
 @login_required
 def dashboard():
-    ...
+    return redirect(url_for("/dashboard"))
     
 if __name__ == "__main__":
     app.run(debug=True)

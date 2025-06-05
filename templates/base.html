@@ -27,14 +27,15 @@
     <main class="container py-5">
         {% with messages = get_flashed_messages() %}
             {% if messages %}
-                <div class="flash-message">
+                <div class="flashes-container">
                     {% for message in messages %}
-                        <div>{{ message }}</div>
+                        <div class="flash-message">{{ message }}</div>
                     {% endfor %}
                 </div>
             {% endif %}
         {% endwith %}
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
     </main>
 
     <!-- Footer -->

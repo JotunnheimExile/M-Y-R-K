@@ -112,7 +112,10 @@ container.addEventListener('dragstart', e => e.preventDefault());
   // =========================
   // 3. Fade-out of flashes (ID: '.flash-message')
   // =========================
+  console.log("JS Loaded");
   const flashes = document.querySelectorAll('.flash-message');
+  console.log("Flash messages found: flashes.length");
+  
   flashes.forEach(flash => {
       setTimeout(() => {
           flash.classList.add('fade-out');
