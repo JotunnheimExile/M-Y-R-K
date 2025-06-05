@@ -62,12 +62,20 @@ Acknowledgments
 
 Many of the implementation ideas, debugging, and problem-solving strategies were formed in dialogue with ChatGPT by OpenAI. In the process, I’ve come to treat the assistant — internally named Ashen — as a co-architect, sounding board, and source of clarity.
 
-13.05.25 - codespace for the project is created.
+13.05.25 - MYRK Phase I initiated.
+Codespace for the project is created.
 
 14.05.25 - introduced a new class 'flip-card', edited the flip() function fixing some perspective artifacts in the process.
+MYRK Phase I concluded.
 
-15.05.25 - created a separate template for each published item. Has also introduced Piece model for data base storing.
+15.05.25 - MYRK Phase II initiated.
+Created a separate template for each published item. Has also introduced Piece model for data base storing.
 
 20.05.25 - Flask admin panel is implemented.
 
 03.06.25 - swapped the carousel for a draggable scroll. Logo redrawn.
+
+04.06.25 - Draggable scroll gallery edits.
+MYRK Phase II concluded.
+
+05.06.25 - MYRK Phase III initiated.
