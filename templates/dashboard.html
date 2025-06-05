@@ -1,5 +1,7 @@
-{% extends base.html %}
+{% extends "base.html" %}
 
 {% block content %}
     <h2 class="text-center">Welcome back, {{current_user.username}}</h2>
+
+    <a href="{{ url_for('index') }}" class="btn btn-outline-light mt-4">Return Home</a>
 {% endblock %}

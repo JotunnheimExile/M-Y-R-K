@@ -112,13 +112,15 @@ container.addEventListener('dragstart', e => e.preventDefault());
   // =========================
   // 3. Fade-out of flashes (ID: '.flash-message')
   // =========================
-  console.log("JS Loaded");
+  console.log("Looking for flashes...");
   const flashes = document.querySelectorAll('.flash-message');
-  console.log("Flash messages found: flashes.length");
-  
+  console.log("Found", flashes.length, "flashes");
+
   flashes.forEach(flash => {
       setTimeout(() => {
+          flash.offsetHeight; // force reflow
           flash.classList.add('fade-out');
+          console.log("Added 'fade-out' to:", flash);
       }, 2000); // 2 seconds timer
       setTimeout(() => {
           flash.remove();

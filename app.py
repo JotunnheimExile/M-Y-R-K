@@ -109,6 +109,8 @@ def register():
 # Authentication route
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for("dashboard"))
     if request.method == "POST":
         email = request.form["email"]
         password = request.form["password"]
@@ -155,7 +157,10 @@ def when_user_logs_in(sender, user):
 @app.route("/dashboard")
 @login_required
 def dashboard():
-    return redirect(url_for("/dashboard"))
-    
+    try:
+        return render_template("dashboard.html")
+    except Exception as e:
+        return f"<h1>Dashboard Render Error</h1><pre>{e}</pre>", 500
+
 if __name__ == "__main__":
     app.run(debug=True)

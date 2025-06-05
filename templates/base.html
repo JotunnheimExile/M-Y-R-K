@@ -23,17 +23,19 @@
         </div>
     </nav>
 
+    <!-- Flashes -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flashes-container">
+                {% for message in messages %}
+                    <div class="flash-message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
     <!-- Page Content -->
     <main class="container py-5">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="flashes-container">
-                    {% for message in messages %}
-                        <div class="flash-message">{{ message }}</div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
         {% block content %}
         {% endblock %}
     </main>
