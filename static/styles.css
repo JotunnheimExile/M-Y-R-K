@@ -105,24 +105,28 @@ button {
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 0;
-    margin: 0;
     z-index: 1000;
 }
 
+@keyframes flashCombo {
+    0%   { opacity: 0; transform: translateY(-10px); }
+    10%  { opacity: 1; transform: translateY(0); }
+    90%  { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
 .flash-message {
+    animation: flashCombo 3s ease-out forwards;
+}
+
+.flash-message {
+    opacity: 0;
+    transform: translateY(-10px);
     background: rgba(255,255,255,0.8);
     color: black;
     padding: 10px 20px;
-    margin-bottom: 10px;
     border-radius: 6px;
     font-size: 0.95rem;
-    opacity: 1;
-    transition: opacity 1s ease-out;
-}
-
-.flash-message.fade-out {
-    opacity: 0;
 }
 
 /* Reveal animation */
