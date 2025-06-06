@@ -31,27 +31,33 @@ Project Files and Purpose
 
  • app.py — The Flask application; handles routes, user session logic, and database interactions.
 
- • admin.py - Flask admin panel functionality
+ • admin.py - Flask admin panel functionality.
 
- • models.py - Data Models
+ • models.py - Data Models.
+
+ • extensions.py - For circumventing the cycling imports in app.py and models.py.
+
+ • myrk.db — SQLite database file storing user data.
  
- • templates/ — HTML templates.
+ • templates/: HTML templates.
  
- • base.html: Common layout and navigation for all pages.
+ • base.html - Common layout and navigation for all pages.
  
- • index.html: Landing page.
+ • index.html - Home page.
  
- • gallery.html: Displays product images.
+ • gallery.html - Displays item images in a draggable scroll gallery.
+
+ • piece.html - Detailed view of a specific item.
  
- • contacts.html: Static contact form.
+ • contacts.html - Static contact form.
  
- • login.html, register.html: Auth forms.
+ • login.html, register.html - Auth forms.
+
+ • dashboard.html  - User personal space.
  
- • static/ — Contains styles.css and any image assets or scripts.
+ • static/: Contains image assets, styles.css and scripts.
  
  • requirements.txt — Dependencies for recreating the environment.
- 
- • project.db — SQLite database file storing user data.
  
 
 Design Choices
@@ -63,7 +69,7 @@ Acknowledgments
 Many of the implementation ideas, debugging, and problem-solving strategies were formed in dialogue with ChatGPT by OpenAI. In the process, I’ve come to treat the assistant — internally named Ashen — as a co-architect, sounding board, and source of clarity.
 
 13.05.25 - MYRK Phase I initiated.
-Codespace for the project is created.
+Codespace for the project is created and set up.
 
 14.05.25 - introduced a new class 'flip-card', edited the flip() function fixing some perspective artifacts in the process.
 MYRK Phase I concluded.
