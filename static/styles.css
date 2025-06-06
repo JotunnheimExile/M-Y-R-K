@@ -14,7 +14,7 @@ body {
     padding: 0;
 }
 
-.container, .section {
+.container {
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -61,6 +61,11 @@ body {
 /* MAIN LAYOUT FIX — only full height when needed*/
 main {
     padding: 2rem 1rem;
+}
+
+section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 
 /* For homepage full-height layout */
@@ -392,9 +397,4 @@ button {
     letter-spacing: 0.35em;
     font-weight: 600;
     text-transform: uppercase;
-}
-
-section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
 }

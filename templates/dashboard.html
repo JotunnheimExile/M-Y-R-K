@@ -1,7 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2 class="text-center">Welcome back, {{current_user.username}}</h2>
+<div class="dashboard-wrapper d-flex">
+    <!-- Sidebar -->
+    <aside class="sidebar bg-dark text-white p-4" style="min-width: 200px;">
+        <h5 class="mb-4">Settings</h5>
+        <!-- More options later -->
+    </aside>
 
+    <!-- Main Content -->
+    <section class="settings-content p-5 w-100">
+        <h2 class="mb-4">Account Settings</h2>
+
+        <!-- Email Update Form -->
+        <form method="POST" action="{{ url_for('update_email') }}" class="mb-5">
+            <h5>Update Email</h5>
+            <div class="mb-3">
+                <label for="current_email" class="form-label">Current Email</label>
+                <input type="email" class="form-control" id="current_email" value="{{ current_user.email }}" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="new_email" class="form-label">New Email</label>
+                <input type="email" class="form-control" id="new_email" name="new_email" required>
+            </div>
+            <button type="submit" class="btn btn-outline-light">Update Email</button>
+        </form>
+
+        <!-- Password Update Form -->
+        <form method="POST" action="{{ url_for('update_password') }}" class="mb-5">
+            <h5>Update Password</h5>
+            <div class="mb-3">
+                <label for="current_password" class="form-label">Current Password</label>
+                <input type="password" class="form-control" id="current_password" name="current_password" required>
+            </div>
+            <div class="mb-3">
+                <label for="new_password" class="form-label">New Password</label>
+                <input type="password" class="form-control" id="new_password" name="new_password" required>
+            </div>
+            <button type="submit" class="btn btn-outline-light">Update Password</button>
+        </form>
+    </section>
     <a href="{{ url_for('index') }}" class="btn btn-outline-light mt-4">Return Home</a>
+</div>
 {% endblock %}

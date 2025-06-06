@@ -78,4 +78,6 @@ Created a separate template for each published item. Has also introduced Piece m
 04.06.25 - Draggable scroll gallery edits.
 MYRK Phase II concluded.
 
-05.06.25 - MYRK Phase III initiated.
+05.06.25 - MYRK Phase III initiated. "Remember me" logic implemented. Flash animations broke.
+
+06.06.25 - Flash animations fixes.

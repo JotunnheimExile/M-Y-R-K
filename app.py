@@ -127,7 +127,7 @@ def login():
         session["user_id"] = user.id
         session["email"] = email
         flash("Logged in successfully.")
-        return redirect(url_for("index"))
+        return redirect(url_for("dashboard"))
 
     return render_template("login.html")
 
@@ -138,29 +138,46 @@ def logout():
     flash("Logged out.", "info")
     return redirect(url_for("index"))
 
-# Who am I?
-@app.route("/whoami")
-def whoami():
-    if current_user.is_authinticated:
-        return f"Logged in as: {current_user.username}"
-    return "Not logged in"
-
-# Session information
-@app.route("/session_info")
-def session_info():
-    return f"Remember token active: {'_remember' in session}"
-
 @user_logged_in.connect_via(app)
 def when_user_logs_in(sender, user):
     print(f"User {user.username} has logged in.")
 
+# Dashboard route
 @app.route("/dashboard")
 @login_required
 def dashboard():
+    flash(f"Glad to have You back, {current_user.username}")
     try:
         return render_template("dashboard.html")
     except Exception as e:
         return f"<h1>Dashboard Render Error</h1><pre>{e}</pre>", 500
+    
+# Update User Email
+@app.route("/update_email", methods=["POST"])
+@login_required
+def update_email():
+    new_email = request.form.get("new_email")
+    if new_email:
+        current_user.email = new_email
+        db.session.commit()
+        flash("Email updated successfully.")
+    return redirect(url_for("dashboard"))
+
+# Update User Password
+@app.route("/update_password", methods=["POST"])
+@login_required
+def update_password():
+    current_pw = request.form.get("current_password")
+    new_pw = request.form.get("new_password")
+
+    if not current_user.check_password(current_pw):
+        flash("Current password is incorrect.")
+        return redirect(url_for("dashboard"))
+    
+    current_user.password_hash = generate_password_hash(new_pw)
+    db.session.commit()
+    flash("Password updated successfully.")
+    return redirect(url_for("dashboard"))
 
 if __name__ == "__main__":
     app.run(debug=True)
