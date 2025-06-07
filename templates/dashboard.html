@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="dashboard-wrapper d-flex">
+<main class="vh-100 d-flex justify-content-center align-items-center flex-column">
     <!-- Sidebar -->
     <aside class="sidebar bg-dark text-white p-4" style="min-width: 200px;">
         <h5 class="mb-4">Settings</h5>
@@ -40,6 +40,7 @@
             <button type="submit" class="btn btn-outline-light">Update Password</button>
         </form>
     </section>
+    <div class="divider"></div>
     <a href="{{ url_for('index') }}" class="btn btn-outline-light mt-4">Return Home</a>
-</div>
+</main>
 {% endblock %}
