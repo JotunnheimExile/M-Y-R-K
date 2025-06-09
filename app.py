@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from admin import MyAdminIndexView, SecureModelView
 from flask_admin import Admin
-from flask_login import logout_user, login_required, login_user, current_user, user_logged_in
+from flask_login import login_user, login_required, login_fresh, logout_user, current_user, user_logged_in
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
 
@@ -133,8 +133,8 @@ def login():
 
 @app.route("/logout")
 def logout():
+    session.pop("greeted", None)
     logout_user()
-    session.clear()
     flash("Logged out.", "info")
     return redirect(url_for("index"))
 
@@ -146,8 +146,10 @@ def when_user_logs_in(sender, user):
 @app.route("/dashboard")
 @login_required
 def dashboard():
-    flash(f"Glad to have You back, {current_user.username}")
     try:
+        if not login_fresh and not session.get("greeted"):
+            flash(f"Glad to have You back, {current_user.username}", "info")
+            session["greeted"] = True
         return render_template("dashboard.html")
     except Exception as e:
         return f"<h1>Dashboard Render Error</h1><pre>{e}</pre>", 500

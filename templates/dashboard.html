@@ -1,16 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<main class="vh-100 d-flex justify-content-center align-items-center flex-column">
+<main class="dashboard-wrapper d-flex" style="min-height: 80vh;">
+
     <!-- Sidebar -->
     <aside class="sidebar bg-dark text-white p-4" style="min-width: 200px;">
-        <h5 class="mb-4">Settings</h5>
-        <!-- More options later -->
+        <h4 class="mb-4">Dashboard</h4>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-white active" href="#" id="settings-tab">Settings</a>
+            </li>
+            <!-- More options later -->
+            <!-- 
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#" id="history-tab">History</a>
+            </li>
+            -->
+        </ul>
     </aside>
 
     <!-- Main Content -->
-    <section class="settings-content p-5 w-100">
-        <h2 class="mb-4">Account Settings</h2>
+    <section class="settings-content p-5 w-100" id="settings-content">
 
         <!-- Email Update Form -->
         <form method="POST" action="{{ url_for('update_email') }}" class="mb-5">
@@ -39,8 +49,10 @@
             </div>
             <button type="submit" class="btn btn-outline-light">Update Password</button>
         </form>
+        <div class="divider mt-5"></div>
+        <div class="button-wrapper text-center">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-light mt-4">Return Home</a>
+        </div>
     </section>
-    <div class="divider"></div>
-    <a href="{{ url_for('index') }}" class="btn btn-outline-light mt-4">Return Home</a>
 </main>
 {% endblock %}

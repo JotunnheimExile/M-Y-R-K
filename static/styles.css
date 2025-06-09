@@ -97,6 +97,13 @@ button {
     font-size: 1rem;
 }
 
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
 button {
     background-color: #222;
     color: white;
