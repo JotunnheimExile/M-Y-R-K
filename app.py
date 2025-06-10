@@ -100,7 +100,7 @@ def register():
         except Exception as e:
             return f"<h1>Registration error:</h1><pre>{e}</pre>", 500
 
-        flash("Registration successful.")
+        flash("Welcome to MYRK.")
         return redirect(url_for("login"))
 
     return render_template("register.html")
@@ -123,10 +123,9 @@ def login():
             return redirect(url_for("login"))
 
         login_user(user, remember=remember) # Persistent login
+        session["greeted"] = False
 
-        session["user_id"] = user.id
-        session["email"] = email
-        flash("Logged in successfully.")
+        #flash("Logged in successfully.")
         return redirect(url_for("dashboard"))
 
     return render_template("login.html")
@@ -138,6 +137,12 @@ def logout():
     flash("Logged out.", "info")
     return redirect(url_for("index"))
 
+@app.before_request
+def greet_returning_user():
+    if current_user.is_authenticated and not session.get("greeted", True):
+        flash("Glad to have you back, {}.".format(current_user.username))
+        session["greeted"] = True
+
 @user_logged_in.connect_via(app)
 def when_user_logs_in(sender, user):
     print(f"User {user.username} has logged in.")
@@ -147,8 +152,8 @@ def when_user_logs_in(sender, user):
 @login_required
 def dashboard():
     try:
-        if not login_fresh and not session.get("greeted"):
-            flash(f"Glad to have You back, {current_user.username}", "info")
+        if not login_fresh: #and not session.get("greeted")
+            #flash(f"Glad to have You back, {current_user.username}", "info")
             session["greeted"] = True
         return render_template("dashboard.html")
     except Exception as e:
