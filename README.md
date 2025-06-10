@@ -6,7 +6,7 @@ Web application for publishing custom hand painted clothes under  M Y R K  brand
 
 Description:
 
-This project is a minimalist web application designed to serve as a digital foundation for a small business idea — specifically, a boutique online storefront. Its structure and interactivity reflect thoughtful design, with future extensibility in mind.
+This project is a web application designed to serve as a digital foundation for a small business idea — specifically, a boutique online storefront. Its structure and interactivity reflect thoughtful design, with future extensibility in mind.
 
 Core Features
 
@@ -25,7 +25,11 @@ Core Features
  • Image Gallery with Flip Animation: A dedicated product showcase page where each item can be interactively flipped to reveal its reverse side (useful for clothing like shirts), implemented via custom JavaScript and CSS.
  
  • Static Contact Page: Offers visitors a means to reach out — designed to eventually support dynamic form submission or integration with email APIs.
+
+ • Flash messages - smooth alerts for confirming user actions.
  
+ • User dashboard - personal space with various functions (Changing email and/or password without email confirmation, etc.)
+
 
 Project Files and Purpose
 
@@ -89,3 +93,5 @@ MYRK Phase II concluded.
 06.06.25 - Flash animations fixes. User dashboard implemented.
 
 09.06.25 - Dashboard edits. Authentication logic changes.
+
+10.06.25 - 
