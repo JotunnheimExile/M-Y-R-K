@@ -186,5 +186,18 @@ def update_password():
     flash("Password updated successfully.")
     return redirect(url_for("dashboard"))
 
+# Update Username
+@app.route("/update_username", methods=["POST"])
+@login_required
+def update_username():
+    current_un = request.form.get("current_username")
+    new_un = request.form.get("new_username")
+
+    if new_un:
+        current_user.username = new_un
+        db.session.commit()
+        flash("All set, {}.".format(current_user.username))
+    return redirect(url_for("dashboard"))
+
 if __name__ == "__main__":
     app.run(debug=True)

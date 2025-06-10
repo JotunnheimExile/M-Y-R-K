@@ -5,13 +5,13 @@
 
     <!-- Sidebar -->
     <aside class="sidebar bg-dark text-white p-4" style="min-width: 200px;">
-        <h4 class="mb-4">Dashboard</h4>
+        <h5 class="mb-4">Dashboard</h5>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link text-white active" href="#" id="settings-tab">Settings</a>
+                <a class="nav-link text-white" href="" id="settings-tab">Settings</a>
             </li>
             <!-- More options later -->
-            <!-- 
+            <!--
             <li class="nav-item">
                 <a class="nav-link text-white" href="#" id="history-tab">History</a>
             </li>
@@ -22,9 +22,21 @@
     <!-- Main Content -->
     <section class="settings-content p-5 w-100" id="settings-content">
 
+        <!-- Change Username -->
+         <form method="POST" action="{{ url_for('update_username') }}" class="mb-5">
+            <div class="mb-3">
+                <label for="current_username" class="form-label">Current Username</label>
+                <input type="text" class="form-control" id="current_username" value="{{ current_user.username }}" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="new_username" class="form-label">New Username</label>
+                <input type="text" class="form-control" id="new_username" name="new_username" required>
+            </div>
+            <button type="submit" class="btn btn-outline-light mt-4">Update Username</button>
+         </form>
+
         <!-- Email Update Form -->
         <form method="POST" action="{{ url_for('update_email') }}" class="mb-5">
-            <h5>Update Email</h5>
             <div class="mb-3">
                 <label for="current_email" class="form-label">Current Email</label>
                 <input type="email" class="form-control" id="current_email" value="{{ current_user.email }}" disabled>
@@ -33,12 +45,11 @@
                 <label for="new_email" class="form-label">New Email</label>
                 <input type="email" class="form-control" id="new_email" name="new_email" required>
             </div>
-            <button type="submit" class="btn btn-outline-light">Update Email</button>
+            <button type="submit" class="btn btn-outline-light mt-4">Update Email</button>
         </form>
 
         <!-- Password Update Form -->
         <form method="POST" action="{{ url_for('update_password') }}" class="mb-5">
-            <h5>Update Password</h5>
             <div class="mb-3">
                 <label for="current_password" class="form-label">Current Password</label>
                 <input type="password" class="form-control" id="current_password" name="current_password" required>
@@ -47,7 +58,7 @@
                 <label for="new_password" class="form-label">New Password</label>
                 <input type="password" class="form-control" id="new_password" name="new_password" required>
             </div>
-            <button type="submit" class="btn btn-outline-light">Update Password</button>
+            <button type="submit" class="btn btn-outline-light mt-4">Update Password</button>
         </form>
         <div class="divider mt-5"></div>
         <div class="button-wrapper text-center">
