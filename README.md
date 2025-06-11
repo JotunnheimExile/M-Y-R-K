@@ -6,7 +6,7 @@ Web application for publishing custom hand painted clothes under  M Y R K  brand
 
 Description:
 
-This project is a web application designed to serve as a digital foundation for a small business idea — specifically, a boutique online storefront. Its structure and interactivity reflect thoughtful design, with future extensibility in mind.
+This project is a web application designed to serve as a digital foundation for a small business idea — specifically, a boutique online storefront.
 
 Core Features
 
