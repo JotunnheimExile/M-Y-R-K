@@ -1,4 +1,5 @@
 import os
+import traceback
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from admin import MyAdminIndexView, SecureModelView
 from flask_admin import Admin
@@ -163,13 +164,33 @@ def dashboard():
 @app.route("/dashboard_settings")
 @login_required
 def dashboard_settings():
-    return render_template("dashboard_settings.html")
+    try:
+        return render_template("dashboard_settings.html")
+    except Exception as e:
+        traceback.print_exc()
+        return f"<h1>Template Render Error</h1><pre>{e}</pre>", 500
 
 # Dashboard Feedback route
 @app.route("/dashboard_feedback")
 @login_required
 def dashboard_feedback():
-    return render_template("dashboard_feedback.html")
+    try:
+        return render_template("dashboard_feedback.html")
+    except Exception as e:
+        return f"<h1>Template Render Error</h1><pre>{e}</pre>", 500
+
+# Update Username
+@app.route("/update_username", methods=["POST"])
+@login_required
+def update_username():
+    current_un = request.form.get("current_username")
+    new_un = request.form.get("new_username")
+
+    if new_un:
+        current_user.username = new_un
+        db.session.commit()
+        flash("All set, {}.".format(current_user.username))
+    return redirect(url_for("dashboard"))
 
 # Update User Email
 @app.route("/update_email", methods=["POST"])
@@ -198,18 +219,6 @@ def update_password():
     flash("Password updated successfully.")
     return redirect(url_for("dashboard"))
 
-# Update Username
-@app.route("/update_username", methods=["POST"])
-@login_required
-def update_username():
-    current_un = request.form.get("current_username")
-    new_un = request.form.get("new_username")
-
-    if new_un:
-        current_user.username = new_un
-        db.session.commit()
-        flash("All set, {}.".format(current_user.username))
-    return redirect(url_for("dashboard"))
 
 if __name__ == "__main__":
     app.run(debug=True)
