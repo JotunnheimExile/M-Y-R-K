@@ -159,6 +159,18 @@ def dashboard():
     except Exception as e:
         return f"<h1>Dashboard Render Error</h1><pre>{e}</pre>", 500
     
+# Dashboard Settings route
+@app.route("/dashboard_settings")
+@login_required
+def dashboard_settings():
+    return render_template("dashboard_settings.html")
+
+# Dashboard Feedback route
+@app.route("/dashboard_feedback")
+@login_required
+def dashboard_feedback():
+    return render_template("dashboard_feedback.html")
+
 # Update User Email
 @app.route("/update_email", methods=["POST"])
 @login_required

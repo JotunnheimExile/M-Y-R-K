@@ -94,4 +94,6 @@ MYRK Phase II concluded.
 
 09.06.25 - Dashboard edits. Authentication logic changes.
 
-10.06.25 - 
+10.06.25 - Dashboard edits. Introduced Username update.
+
+11.06.25 - 
