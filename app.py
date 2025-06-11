@@ -1,4 +1,5 @@
 import os
+import re
 import traceback
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from admin import MyAdminIndexView, SecureModelView
@@ -71,13 +72,26 @@ def contacts():
     return render_template("contacts.html")
 
 
+# Validators
+def validate_email(email):
+    email_pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9-.]+$"
+    return bool(re.match(email_pattern, email))
+
+def validate_password(password):
+    password_pattern = r"^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]{8,}$"
+    return bool(re.match(password_pattern, password))
+
+def validate_username(username):
+    username_pattern = r"^[a-zA-Z0-9_]{3,16}$"
+    return bool(re.match(username_pattern, username))
+
 # Registration route
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        username = request.form.get("username")
-        email = request.form.get("email")
-        password = request.form.get("password")
+        username = validate_username("username")
+        email = validate_email("email")
+        password = validate_password("password")
 
         if User.query.filter_by(username=username).first():
             flash("Username already exists.")
