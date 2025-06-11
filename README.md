@@ -16,8 +16,6 @@ Core Features
  
  • Password hashing with Werkzeug
  
- • Flash messaging to inform users of login/registration success or failure
- 
  • Persistent session tracking for authenticated users
  
  • Database Integration: SQLite used to store user credentials (username, email, and securely hashed password).
