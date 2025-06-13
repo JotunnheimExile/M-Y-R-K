@@ -7,11 +7,16 @@ h1, h2, h3 {
     font-family: 'Cormorant Garamond', serif;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Manrope', sans-serif;
     background-color: #f7f7f7;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 .container {
@@ -412,6 +417,12 @@ button {
 
 .flip-btn:hover {
     background: rgba(255, 255, 255, 0.2);
+}
+
+/* Dashboard */
+.settings-form-wrapper {
+  margin-left: 0;
+  margin-right: auto;
 }
 
 .dashboard-wrapper {

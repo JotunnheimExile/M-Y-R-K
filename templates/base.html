@@ -35,7 +35,7 @@
     {% endwith %}
 
     <!-- Page Content -->
-    <main class="{% if 'dashboard' not in request.endpoint %}container py-5{% else %}py-5{% endif %}">
+    <main class="{% if 'dashboard' not in request.endpoint %}container py-5{% else %}p-0 m-0{% endif %}">
         {% block content %}{% endblock %}
     </main>
 

@@ -2,19 +2,18 @@
 
 {% block content %}
 <div class="container-fluid">
-  <div class="row">
+  <div class="row g-0">  <!-- removes gutter gap -->
     
     <!-- Sidebar -->
-    <div class="col-md-3 col-lg-2 bg-dark border-end min-vh-100">
+    <div class="col-md-3 col-lg-2 bg-dark border-end min-vh-100 px-3">
       {% include "_dashboard_sidebar.html" %}
     </div>
 
-    <!-- Content Area -->
-    <div class="col-md-9 col-lg-10 py-4">
-      <div class="ps-4" style="max-width: 700px;">
+    <!-- Main content -->
+    <div class="col-md-9 col-lg-10 py-4 px-4">
+      <div class="settings-form-wrapper" style="max-width: 600px; margin-left: 240px;">
         {% block dashboard_content %}
-        <h1>Dashboard</h1>
-        <!-- your settings form(s) go here -->
+        <!-- Default content -->
         {% endblock %}
       </div>
     </div>
@@ -22,4 +21,3 @@
   </div>
 </div>
 {% endblock %}
-

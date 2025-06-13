@@ -1,8 +1,6 @@
-{% extends "base.html" %}
+{% extends "dashboard.html" %}
 
-{% block content %}
-<main class="dashboard-wrapper" style="min-height:80vh;">
-    {% include "_dashboard_sidebar.html" %}
+{% block dashboard_content %}
     <section class="settings-content" id="settings-content">
 
         <!-- Change Username Form -->
@@ -48,5 +46,4 @@
             <a href="{{ url_for('index') }}" class="btn btn-outline-light mt-4">Return Home</a>
         </div>
     </section>
-</main>
 {% endblock %}
