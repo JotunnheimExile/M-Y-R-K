@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<main class="dashboard-wrapper d-flex" style="min-height:80vh;">
+<main class="dashboard-wrapper" style="min-height:80vh;">
     {% include "_dashboard_sidebar.html" %}
-    <section class="settings-content p-5 w-100" id="settings-content">
+    <section class="settings-content" id="settings-content">
 
         <!-- Change Username Form -->
-        <form method="POST" action="{{ url_for('update_username') }}" class="mb-5">
+        <form method="POST" action="{{ url_for('update_username') }}" class="mb-4">
             <div class="mb-3">
                 <label for="current_username" class="form-label">Current Username</label>
                 <input type="text" class="form-control" id="current_username" value="{{ current_user.username }}" disabled>
@@ -19,7 +19,7 @@
         </form>
 
         <!-- Email Update Form -->
-        <form method="POST" action="{{ url_for('update_email') }}" class="mb-5">
+        <form method="POST" action="{{ url_for('update_email') }}" class="mb-4">
             <div class="mb-3">
                 <label for="current_email" class="form-label">Current Email</label>
                 <input type="email" class="form-control" id="current_email" value="{{ current_user.email }}" disabled>
@@ -32,7 +32,7 @@
         </form>
 
         <!-- Password Update Form -->
-        <form method="POST" action="{{ url_for('update_password') }}" class="mb-5">
+        <form method="POST" action="{{ url_for('update_password') }}" class="mb-4">
             <div class="mb-3">
                 <label for="current_password" class="form-label">Current Password</label>
                 <input type="password" class="form-control" id="current_password" name="current_password" required>

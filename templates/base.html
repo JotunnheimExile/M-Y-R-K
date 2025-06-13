@@ -24,20 +24,19 @@
     </nav>
 
     <!-- Flashes -->
-    {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             <div class="flashes-container">
-                {% for message in messages %}
-                    <div class="flash-message">{{ message }}</div>
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
                 {% endfor %}
             </div>
         {% endif %}
     {% endwith %}
 
     <!-- Page Content -->
-    <main class="container py-5">
-        {% block content %}
-        {% endblock %}
+    <main class="{% if 'dashboard' not in request.endpoint %}container py-5{% else %}py-5{% endif %}">
+        {% block content %}{% endblock %}
     </main>
 
     <!-- Footer -->

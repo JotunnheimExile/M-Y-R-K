@@ -89,9 +89,13 @@ def validate_username(username):
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        username = validate_username("username")
-        email = validate_email("email")
-        password = validate_password("password")
+        username = request.form.get("username")
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        if not validate_username("username") or not validate_email("email") or not validate_password("password"):
+            flash("Invalid input. Please check your form.", "caution")
+            return redirect(url_for("register"))
 
         if User.query.filter_by(username=username).first():
             flash("Username already exists.")
@@ -134,7 +138,7 @@ def login():
         user = User.query.filter_by(email=email).first()
 
         if user is None or not user.check_password(password):
-            flash("Invalid credentials.")
+            flash("Invalid credentials.", "caution")
             return redirect(url_for("login"))
 
         login_user(user, remember=remember) # Persistent login
@@ -149,7 +153,7 @@ def login():
 def logout():
     session.pop("greeted", None)
     logout_user()
-    flash("Logged out.", "info")
+    flash("Logged out.", "success")
     return redirect(url_for("index"))
 
 @app.before_request
@@ -167,8 +171,7 @@ def when_user_logs_in(sender, user):
 @login_required
 def dashboard():
     try:
-        if not login_fresh: #and not session.get("greeted")
-            #flash(f"Glad to have You back, {current_user.username}", "info")
+        if not login_fresh:
             session["greeted"] = True
         return render_template("dashboard.html")
     except Exception as e:
@@ -214,7 +217,7 @@ def update_email():
     if new_email:
         current_user.email = new_email
         db.session.commit()
-        flash("Email updated successfully.")
+        flash("Email updated successfully.", "success")
     return redirect(url_for("dashboard"))
 
 # Update User Password
@@ -225,12 +228,12 @@ def update_password():
     new_pw = request.form.get("new_password")
 
     if not current_user.check_password(current_pw):
-        flash("Current password is incorrect.")
+        flash("Current password is incorrect.", "caution")
         return redirect(url_for("dashboard"))
     
     current_user.password_hash = generate_password_hash(new_pw)
     db.session.commit()
-    flash("Password updated successfully.")
+    flash("Password updated successfully.", "success")
     return redirect(url_for("dashboard"))
 
 

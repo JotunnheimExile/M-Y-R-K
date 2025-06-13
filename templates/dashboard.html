@@ -1,25 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-<main class="dashboard-wrapper d-flex" style="min-height: 80vh;">
-
+<div class="container-fluid">
+  <div class="row">
+    
     <!-- Sidebar -->
-    <aside class="sidebar bg-dark text-white p-4" style="min-width: 200px;">
-        <h5 class="mb-4">Dashboard</h5>
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link text-white" href="{{ url_for('dashboard_settings') }}" id="settings-tab">Settings</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="{{ url_for('dashboard_feedback') }}" id="feedback-tab">Feedback</a>
-            </li>
-            <!-- More options later -->
-            <!--
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#" id="...-tab">...</a>
-            </li>
-            -->
-        </ul>
-    </aside>
-</main>
+    <div class="col-md-3 col-lg-2 bg-dark border-end min-vh-100">
+      {% include "_dashboard_sidebar.html" %}
+    </div>
+
+    <!-- Content Area -->
+    <div class="col-md-9 col-lg-10 py-4">
+      <div class="ps-4" style="max-width: 700px;">
+        {% block dashboard_content %}
+        <h1>Dashboard</h1>
+        <!-- your settings form(s) go here -->
+        {% endblock %}
+      </div>
+    </div>
+
+  </div>
+</div>
 {% endblock %}
+

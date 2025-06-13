@@ -101,7 +101,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
 button {
@@ -109,6 +109,20 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+/* Utility */
+.letter-spaced {
+    letter-spacing: 0.35em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: #333;
+    margin-top: 3rem;
 }
 
 /* Flash messages */
@@ -400,9 +414,34 @@ button {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* Utility */
-.letter-spaced {
-    letter-spacing: 0.35em;
-    font-weight: 600;
-    text-transform: uppercase;
+.dashboard-wrapper {
+    display: flex;
+    gap: 2rem;
+    width: 100vw; /* full viewport */
+    max-width: none; /* prevent max-width from base.css or Bootstrap */
+    margin-left: 0;
+    margin-right: 0;
+    padding: 3rem 1rem;
+}
+
+.sidebar {
+    min-width: 200px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+}
+
+.settings-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.settings-content form {
+    width: 100%;
+    max-width: 600px;
+    background-color: #000; /* optional for boxed look */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
