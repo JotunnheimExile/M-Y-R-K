@@ -98,4 +98,4 @@ MYRK Phase II concluded.
 
 11.06.25 - Two redirects from Dashboard introduced. Email/Password/Username validators provided.
 
-13.06.25 - Validation fixes. Dashboard edits
+13.06.25 - Validation fixes. Dashboard edits.
