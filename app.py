@@ -39,12 +39,12 @@ admin.add_view(SecureModelView(Piece, db.session))
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+
 ### ROUTES ###
 # Home route
 @app.route("/")
 def index():
     return render_template("index.html")
-
 
 # Items related routes
 @app.route("/gallery")
@@ -65,12 +65,10 @@ def reserve_piece(piece_id):
         db.session.commit()
     return redirect(url_for('view_piece', piece_id=piece.id))
 
-
 # Contacts route
 @app.route("/contacts")
 def contacts():
     return render_template("contacts.html")
-
 
 # Validators
 def validate_email(email):
@@ -123,7 +121,6 @@ def register():
         return redirect(url_for("login"))
 
     return render_template("register.html")
-
 
 # Authentication route
 @app.route("/login", methods=["GET", "POST"])
