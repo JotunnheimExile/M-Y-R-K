@@ -6,7 +6,7 @@ Web application for publishing custom hand painted clothes under  M Y R K  brand
 
 Description:
 
-This project is a web application designed to serve as a digital foundation for a small business idea — specifically, a boutique online storefront. Its structure and interactivity reflect thoughtful design, with future extensibility in mind.
+This project is a web application designed to serve as a digital foundation for a small business idea — specifically, a boutique online storefront.
 
 Core Features
 
@@ -15,8 +15,6 @@ Core Features
  • User Registration and Authentication: Full functionality for user sign-up and login, including:
  
  • Password hashing with Werkzeug
- 
- • Flash messaging to inform users of login/registration success or failure
  
  • Persistent session tracking for authenticated users
  
@@ -97,5 +95,3 @@ MYRK Phase II concluded.
 10.06.25 - Dashboard edits. Introduced Username update.
 
 11.06.25 - Two redirects from Dashboard introduced. Email/Password/Username validators provided.
-
-13.06.25 - Validation fixes. Dashboard edits.
