@@ -101,3 +101,5 @@ MYRK Phase II concluded.
 11.06.25 - Two redirects from Dashboard introduced. Email/Password/Username validators provided.
 
 13.06.25 - Dashboard edits and validation fix.
+
+16.06.25 - Piece flip functionality edits.
