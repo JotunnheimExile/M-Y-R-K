@@ -77,7 +77,7 @@ Many of the implementation ideas, debugging, and problem-solving strategies were
 13.05.25 - MYRK Phase I initiated.
 Codespace for the project is created and set up.
 
-14.05.25 - introduced a new class 'flip-card', edited the flip() function fixing some perspective artifacts in the process.
+14.05.25 - Introduced a new class 'flip-card', edited the flip() function fixing some perspective artifacts in the process.
 MYRK Phase I concluded.
 
 15.05.25 - MYRK Phase II initiated.
@@ -85,7 +85,7 @@ Created a separate template for each published item. Has also introduced Piece m
 
 20.05.25 - Flask admin panel is implemented.
 
-03.06.25 - swapped the carousel for a draggable scroll. Logo redrawn.
+03.06.25 - Swapped the carousel for a draggable scroll. Logo redrawn.
 
 04.06.25 - Draggable scroll gallery edits.
 MYRK Phase II concluded.
