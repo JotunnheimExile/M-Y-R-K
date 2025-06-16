@@ -2,27 +2,27 @@
 {% block title %}Contact Us | M Y R K{% endblock %}
 
 {% block content %}
-<main class="vh-100 d-flex justify-content-center align-items-center flex-column">
-    <section class="container py-5 text-center reveal">
-        <h1 class="display-4">Reach Out</h1>
-        <p class="lead mb-5">Two voices, one vision. Feel free to contact us — for collaboration, questions, or alignment.</p>
+    <main class="vh-100 d-flex justify-content-center align-items-center flex-column">
+        <section class="container py-5 text-center reveal">
+            <h1 class="display-4">Reach Out</h1>
+            <p class="lead mb-5">Two voices, one vision. Feel free to contact us — for collaboration, questions, or alignment.</p>
 
-        <div class="row justify-content-center">
-            <div class="col-md-5 mb-4">
-                <h2>Jötunn</h2>
-                <p>Primal resonance. Wields myth and texture.</p>
-                <p>Email: <a href="mailto:jotunn@example.com" class="text-light">jotunn@example.com</a></p>
+            <div class="row justify-content-center">
+                <div class="col-md-5 mb-4">
+                    <h2>Jötunn</h2>
+                    <p>Primal resonance. Wields myth and texture.</p>
+                    <p>Email: <a href="mailto:jotunn@example.com" class="text-light">jotunn@example.com</a></p>
+                </div>
+                <div class="col-md-5 mb-4">
+                    <h2>Nøkturn</h2>
+                    <p>Still waters. Carries vision from below.</p>
+                    <p>Email: <a href="mailto:nokturn@example.com" class="text-light">nokturn@example.com</a></p>
+                </div>
             </div>
-            <div class="col-md-5 mb-4">
-                <h2>Nøkturn</h2>
-                <p>Still waters. Carries vision from below.</p>
-                <p>Email: <a href="mailto:nokturn@example.com" class="text-light">nokturn@example.com</a></p>
-            </div>
+        </section>
+        <div class="divider"></div>
+        <div class="container py-5 d-flex flex-column align-items-center text-center" style="min-height: 60vh;">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-light mt-4">Return Home</a>
         </div>
-    </section>
-    <div class="divider"></div>
-    <div class="container py-5 d-flex flex-column align-items-center text-center" style="min-height: 60vh;">
-        <a href="{{ url_for('index') }}" class="btn btn-outline-light mt-4">Return Home</a>
-    </div>
-</main>
+    </main>
 {% endblock %}

@@ -1,32 +1,36 @@
 {% extends "base.html" %}
-{% block title %}Gallery | M Y R K{% endblock %}
+{% block title %}{{ piece.title }} | M Y R K{% endblock %}
 
 {% block content %}
-<div class="vault-wrapper">
-    <h2>{{ piece.title }}</h2>
-    <p class="text-muted description-text">{{ piece.description }}</p>
-
-    <div class="vault-card">
-        <div class="flip-inner">
-            <div class="flip-front">
-                <img src="{{ url_for('static', filename=piece.front_image) }}" alt="{{ piece.title }} Front">
-                <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
-            </div>
-            <div class="flip-back">
-                <img src="{{ url_for('static', filename=piece.back_image) }}" alt="{{ piece.title }} Back">
-                <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
+    <div class="container py-5">
+        <div class="text-center mb-4">
+            <h2>{{ piece.title }}</h2>
+            <p class="description-text">{{ piece.description }}</p>
+        </div>
+        
+        <div class="flip-card mx-auto">
+            <div class="flip-inner">
+                <div class="flip-front flip-face front">
+                    <img src="{{ url_for('static', filename=piece.front_image) }}" alt="{{ piece.title }} Front">
+                    <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
+                </div>
+                <div class="flip-back flip-face back">
+                    <img src="{{ url_for('static', filename=piece.back_image) }}" alt="{{ piece.title }} Back">
+                    <button class="flip-btn" onclick="flip(this)">&#x21bb;</button>
+                </div>
             </div>
         </div>
+            <!--
+            {% if not piece.reserved %}
+                <form action="{{ url_for('reserve_piece', piece_id=piece.id) }}" method="POST">
+                    <button type="submit" class="btn btn-outline-light mt-3">Reserve this Piece</button>
+                </form>
+            {% else %}
+                <p class="text-warning mt-3">This piece is reserved.</p>
+            {% endif %}
+            -->
+        <section class="container text-center py-5">
+            <a href="{{ url_for('gallery') }}" class="btn btn-outline-light mt-4">Back to Gallery</a>
+        </section>
     </div>
-    <!--
-    {% if not piece.reserved %}
-        <form action="{{ url_for('reserve_piece', piece_id=piece.id) }}" method="POST">
-            <button type="submit" class="btn btn-outline-light mt-3">Reserve this Piece</button>
-        </form>
-    {% else %}
-        <p class="text-warning mt-3">This piece is reserved.</p>
-    {% endif %}
-    -->
-    <a href="{{ url_for('gallery') }}" class="btn btn-outline-secondary mt-4">Back to Gallery</a>
-</div>
 {% endblock %}

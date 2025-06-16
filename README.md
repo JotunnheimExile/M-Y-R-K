@@ -56,6 +56,10 @@ Project Files and Purpose
  • login.html, register.html - Auth forms.
 
  • dashboard.html  - User personal space.
+
+ • dashboard_settings.html - Account options for Username/Email/Password change.
+
+ • dashboard_feedback.html - Feedback form.
  
  • static/: Contains image assets, styles.css and scripts.
  

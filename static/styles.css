@@ -307,6 +307,7 @@ button {
     border-radius: 6px;
 }
 
+/* Piece */
 .flip-front, .flip-back {
     position: absolute;
     width: 100%;
@@ -332,7 +333,6 @@ button {
     position: relative;
     width: 100%;
     max-width: 500px;
-    height: 100%;
     aspect-ratio: 4 / 5;
     margin: 2rem auto;
     perspective: 1600px;
@@ -349,6 +349,13 @@ button {
 
 .flip-card.flipped .flip-inner {
     transform: scale(1.01) rotateY(180deg);
+}
+
+.flip-front.flip-face,
+.flip-back.flip-face {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .flip-face {
@@ -392,7 +399,7 @@ button {
 }
 
 .description-text {
-    margin-bottom: 4rem;
+    margin-bottom: 0;
 }
 
 /* Flip button */
