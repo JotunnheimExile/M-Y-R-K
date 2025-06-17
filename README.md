@@ -102,4 +102,4 @@ MYRK Phase II concluded.
 
 13.06.25 - Dashboard edits and validation fix.
 
-16.06.25 - Piece flip functionality edits.
+16.06.25 - Piece flip functionality edits. Project exported to local development (PyCharm).
